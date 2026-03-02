@@ -30,13 +30,12 @@ export const Window = ({
     const el = windowRef.current;
     if (!el) return;
 
-    const rect = el.getBoundingClientRect();
     dragRef.current = {
       isDragging: true,
       startX: e.clientX,
       startY: e.clientY,
-      offsetX: rect.left,
-      offsetY: rect.top,
+      offsetX: el.offsetLeft,
+      offsetY: el.offsetTop,
       hasMoved: false,
     };
 
