@@ -66,9 +66,9 @@ export const FILE_SYSTEM: Record<WindowName, FileSystemSection> = {
       },
       {
         id: 'photo',
-        name: 'Profile Photo.jpg',
+        name: 'Profile Photo.png',
         type: 'image',
-        url: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600',
+        url: '/my_image.png',
       },
     ],
   },

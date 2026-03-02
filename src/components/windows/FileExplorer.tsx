@@ -18,7 +18,7 @@ export const FileExplorer = ({ windowId, navState, onItemClick, onGoBack }: File
           onClick={() => onGoBack(windowId)}
           className="flex items-center gap-2 text-xs uppercase font-bold text-blue-200 hover:text-white active:text-white/90 transition-colors min-h-[44px] px-2 -ml-2 rounded-lg active:bg-white/10"
         >
-          <ArrowLeft size={16} /> Назад
+          <ArrowLeft size={16} /> Back
         </button>
 
         {file.type === 'text' ? (
@@ -60,7 +60,7 @@ export const FileExplorer = ({ windowId, navState, onItemClick, onGoBack }: File
           onClick={() => onGoBack(windowId)}
           className="flex items-center gap-2 text-xs uppercase font-bold text-blue-200 hover:text-white active:text-white/90 transition-colors min-h-[44px] px-2 -ml-2 rounded-lg active:bg-white/10"
         >
-          <ArrowLeft size={16} /> Назад
+          <ArrowLeft size={16} /> Back
         </button>
       )}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
