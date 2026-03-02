@@ -235,8 +235,8 @@ export const FILE_SYSTEM: Record<WindowName, FileSystemSection> = {
    ════════════════════════════════════════════ */
 
 export const SOCIAL_LINKS = {
-  linkedin: 'https://www.linkedin.com/in/YOUR_USERNAME',
-  github: 'https://github.com/YOUR_USERNAME',
+  linkedin: 'https://www.linkedin.com/in/maximiv',
+  github: 'https://github.com/bananocha',
 } as const;
 
 /* ════════════════════════════════════════════
