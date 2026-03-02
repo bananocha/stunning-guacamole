@@ -4,12 +4,13 @@ import type { WindowName } from '../types';
 
 interface TaskbarProps {
   windows: Record<WindowName, boolean>;
+  minimized: Record<WindowName, boolean>;
   activeWindow: WindowName;
   onSetActiveWindow: (name: WindowName) => void;
   currentTime: Date;
 }
 
-export const Taskbar = ({ windows, activeWindow, onSetActiveWindow, currentTime }: TaskbarProps) => (
+export const Taskbar = ({ windows, minimized, activeWindow, onSetActiveWindow, currentTime }: TaskbarProps) => (
   <div className="absolute bottom-0 left-0 w-full h-12 z-50 flex items-center justify-between px-2 sm:px-4 bg-gradient-to-b from-white/20 to-black/60 border-t border-white/20 backdrop-blur-xl">
     <div className="flex items-center gap-3">
       <button className="h-11 w-11 bg-blue-600 rounded-full shadow-lg shadow-blue-500/40 flex items-center justify-center hover:scale-110 transition-transform active:scale-95 border border-white/30 relative overflow-hidden group">
@@ -28,13 +29,13 @@ export const Taskbar = ({ windows, activeWindow, onSetActiveWindow, currentTime 
             key={name}
             onClick={() => onSetActiveWindow(name)}
             className={`h-10 px-2 sm:px-4 rounded flex items-center gap-2 border transition-all duration-300 min-w-[44px] ${
-              activeWindow === name
+              activeWindow === name && !minimized[name]
                 ? 'bg-white/20 border-white/40 sm:w-36 shadow-inner active:bg-white/30'
                 : 'bg-transparent border-transparent opacity-50 active:opacity-80'
             }`}
           >
             <Icon size={16} className="text-white shrink-0" />
-            {activeWindow === name && (
+            {activeWindow === name && !minimized[name] && (
               <span className="hidden sm:block text-[10px] text-white font-bold uppercase truncate">{name}</span>
             )}
           </button>

@@ -12,12 +12,15 @@ import { FILE_SYSTEM, WINDOW_KEYS } from './constants/content';
 import type { WindowName } from './types';
 
 const App = () => {
-  const [booted, setBooted] = useState(false);
-  const { windows, activeWindow, toggleWindow, setActiveWindow } = useWindowManager();
+  const [booted, setBooted] = useState(() => sessionStorage.getItem('booted') === '1');
+  const { windows, minimized, activeWindow, toggleWindow, minimizeWindow, activateWindow, taskbarClick } = useWindowManager();
   const { navHistory, handleItemClick, goBack, resetNav } = useFileExplorer();
   const currentTime = useClock();
 
-  const handleBootComplete = useCallback(() => setBooted(true), []);
+  const handleBootComplete = useCallback(() => {
+    sessionStorage.setItem('booted', '1');
+    setBooted(true);
+  }, []);
 
   const handleToggleWindow = (name: WindowName) => {
     if (!windows[name]) resetNav(name);
@@ -43,9 +46,11 @@ const App = () => {
                 title={section.title}
                 icon={section.icon}
                 isOpen={windows[key]}
+                isMinimized={minimized[key]}
                 onClose={() => handleToggleWindow(key)}
+                onMinimize={() => minimizeWindow(key)}
                 isActive={activeWindow === key}
-                onClick={() => setActiveWindow(key)}
+                onClick={() => activateWindow(key)}
                 style={{
                   top: `${2 + index * 3}%`,
                   left: `${2 + index * 2}%`,
@@ -68,8 +73,9 @@ const App = () => {
 
       <Taskbar
         windows={windows}
+        minimized={minimized}
         activeWindow={activeWindow}
-        onSetActiveWindow={setActiveWindow}
+        onSetActiveWindow={taskbarClick}
         currentTime={currentTime}
       />
     </div>

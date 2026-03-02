@@ -9,7 +9,9 @@ export interface WindowProps {
   title: string;
   icon: LucideIcon;
   isOpen: boolean;
+  isMinimized: boolean;
   onClose: () => void;
+  onMinimize: () => void;
   children: ReactNode;
   isActive: boolean;
   onClick: () => void;
