@@ -17,7 +17,7 @@ interface BootScreenProps {
 
 export const BootScreen = ({ onBootComplete }: BootScreenProps) => {
   const [progress, setProgress] = useState(0);
-  const [status, setStatus] = useState(BOOT_STATUSES[0]);
+  const [status, setStatus] = useState<string>(BOOT_STATUSES[0]);
   const [fading, setFading] = useState(false);
 
   const handleComplete = useCallback(() => {
